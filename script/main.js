@@ -1,33 +1,50 @@
 const container = document.getElementById("grid-container");
-const singleCell = document.createElement("div");
-const buttonDrawGrid = document.createElement("button");
+const buttonDrawGrid = document.getElementById("button-draw-grid");
 buttonDrawGrid.textContent = "Generate sketchpad";
-document.body.appendChild(buttonDrawGrid);
-singleCell.setAttribute("class", "grid-item");
+// document.body.appendChild(buttonDrawGrid);
 
 function drawSketchpad(size) {
-  container.style.cssText = `width: ${size * 10}px; height: ${size * 10}px`;
+  // Clear the existing grid
+  container.innerHTML = "";
 
+  // Calculate the size of each cell to fit within 960px
+  const cellSize = 900 / size;
+
+  // Set the container dimensions
+  container.style.cssText = `
+    width: 900px; height: 900px;
+    border: 3px solid hsl(320, 100%, 40%);
+    border-radius: 5px;
+  `;
+
+  // Generate the grid
   for (let i = 0; i < size * size; i++) {
-    // Clone the cell
-    const clonedCell = singleCell.cloneNode(true);
+    const singleCell = document.createElement("div");
+    singleCell.setAttribute("class", "grid-item");
+    singleCell.style.width = `${cellSize}px`;
+    singleCell.style.height = `${cellSize}px`;
+
     // Add event listener to each cloned cell
-    clonedCell.addEventListener("mouseenter", () => {
-      clonedCell.classList.add("hovered");
+    singleCell.addEventListener("mouseover", () => {
+      singleCell.classList.add("hovered");
     });
+
     // Append the cloned cell to the container
-    container.append(clonedCell);
+    container.append(singleCell);
   }
 }
 
 buttonDrawGrid.addEventListener("click", () => {
-  let gridSize = prompt("Grid dimensions: ");
-  if (gridSize <= 100) {
+  let gridSize = prompt(
+    "Enter the number of squares per side for the new grid (max 100):"
+  );
+  gridSize = parseInt(gridSize);
+
+  if (gridSize > 0 && gridSize <= 100) {
     drawSketchpad(gridSize);
-    buttonDrawGrid.remove();
   } else if (gridSize > 100) {
-    alert("Too much grids");
+    alert("Too many grids! Please enter a number less than or equal to 100.");
+  } else {
+    alert("Invalid input! Please enter a valid number.");
   }
 });
-
-// drawSketchpad(16);

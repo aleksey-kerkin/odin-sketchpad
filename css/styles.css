@@ -1,4 +1,6 @@
 body {
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   display: flex;
@@ -9,19 +11,26 @@ body {
 }
 
 button {
-  padding: 10px;
+  padding: 8px 24px;
   background-color: hsl(80, 100%, 40%);
-  border-radius: 10px;
-  border: 2px solid hsl(270, 100%, 10%);
-  font-size: 2rem;
+  border-radius: 5px;
+  border: 3px solid hsl(320, 100%, 40%);
+  font-family: monospace;
+  text-align: center;
+  font-size: 1.5rem;
   color: hsl(280, 100%, 10%);
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+button:hover {
+  background-color: hsl(80, 100%, 60%);
 }
 
 #grid-container {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  height: auto;
 }
 
 .grid-item {
