@@ -5,26 +5,36 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: hsl(260, 100%, 10%);
+}
+
+button {
+  padding: 10px;
+  background-color: hsl(80, 100%, 40%);
+  border-radius: 10px;
+  border: 2px solid hsl(270, 100%, 10%);
+  font-size: 2rem;
+  color: hsl(280, 100%, 10%);
 }
 
 #grid-container {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  width: 320px;
   height: auto;
 }
 
 .grid-item {
-  width: 20px;
-  height: 20px;
-  background-color: hsl(0, 0%, 80%);
+  width: 10px;
+  height: 10px;
+  background-color: hsl(80, 100%, 40%);
 }
 
 .grid-item:hover {
-  background-color: hsl(0, 0%, 30%);
-  transition: background-color 0.2s ease;
+  background-color: hsl(80, 100%, 20%);
+  transition: background-color 0.1s ease;
 }
 
 .hovered {
-  background-color: hsl(0, 0%, 30%);
+  background-color: hsl(80, 100%, 20%);
 }
